@@ -34,7 +34,7 @@ do
                   x=$(echo "$cmd" | sed -n 2p)
      fi
 
-     if [ $x -gt $PORT ]; then
+     if [[ $x -gt $PORT ]]; then
                  PORT=$x
      fi
   done
