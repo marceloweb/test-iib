@@ -43,7 +43,7 @@ done
 HTTP_PORT=$(echo `expr $PORT + 1`)
 HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
-mqsipackagebar -a $APP.bar -w /home/marcelo/IBM/IIBT10/workspace -k $APP
+mqsipackagebar -a $APP.bar -w $MQSI_WORKPATH -k $APP
 
 BROKER=BRAMIL$TYPE$ENV$NUMBER
 echo "Preparando $BROKER..."
