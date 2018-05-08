@@ -8,4 +8,13 @@
 		<arg value="App_Test"/>
 	</exec>
 </target>
+<target name="deploy">
+        <exec executable="/bin/sh">
+                <arg value="deploy_prd.sh"/>
+                <arg value="CRG"/>
+                <arg value="PRD"/>
+                <arg value="01"/>
+                <arg value="App_Test"/>
+        </exec>
+</target>
 </project>
