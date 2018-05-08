@@ -34,7 +34,7 @@ do
                   x=$(echo "$cmd" | sed -n 2p)
      fi
 
-     if [ $x -gt $PORT ]; then
+     if [ "$x" -gt "$PORT" ]; then
                  PORT=$x
      fi
   done
@@ -43,7 +43,7 @@ done
 HTTP_PORT=$(echo `expr $PORT + 1`)
 HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
-mqsipackagebar -a $APP.bar -w $MQSI_WORKPATH -k $APP
+mqsipackagebar -a $APP.bar -w $WORKSPACE -k $APP
 
 BROKER=BRAMIL$TYPE$ENV$NUMBER
 echo "Preparando $BROKER..."
