@@ -17,4 +17,13 @@
                 <arg value="App_Test"/>
         </exec>
 </target>
+<target name="rollback">
+        <exec executable="/bin/sh">
+                <arg value="deploy.sh"/>
+                <arg value="CRG"/>
+                <arg value="DSV"/>
+                <arg value="01"/>
+                <arg value="App_Test"/>
+        </exec>
+</target>
 </project>
