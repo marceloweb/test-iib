@@ -19,6 +19,9 @@ echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 nã
 if [ -n ROLLBACK ]
 then
 
+  GIT_HASH=$(git log --pretty=%t -1)
+  echo ${GIT_BRANCH}	
+
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
   x=0
@@ -47,7 +50,7 @@ then
   HTTP_PORT=$(echo `expr $PORT + 1`)
   HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
-  mqsipackagebar -a $APP.bar -w $WORKSPACE -k $APP
+  mqsipackagebar -a $APP_v$HASH.bar -w $WORKSPACE -k $APP
 
   ENVS=( "DSV" "QA" "HOM" )
 
