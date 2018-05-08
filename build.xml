@@ -8,7 +8,7 @@
 		<arg value="App_Test"/>
 	</exec>
 </target>
-<target name="deploy">
+<target name="deploy_prd">
         <exec executable="/bin/sh">
                 <arg value="deploy_prd.sh"/>
                 <arg value="CRG"/>
