@@ -45,11 +45,11 @@ HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
 mqsipackagebar -a $APP.bar -w $WORKSPACE -k $APP
 
-ENVS=( "DSV" "QA" "HOM" )
+ENVS=( "01" "02" )
 
 for i in "${ENVS[@]}"
 do
-   ENV=$i
+   NUMBER=$i
    BROKER=BRAMIL$TYPE$ENV$NUMBER
    echo "Preparando $BROKER..."
 
