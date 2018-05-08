@@ -16,7 +16,7 @@ die () {
 [ "$#" -eq 4 ] || die "Os 4 argumentos são obrigatórios. Apenas $# foram informados"
 echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 não é numérico"
 
-if [ -z ROLLBACK ]
+if [ -n ROLLBACK ]
 then
 
   source $IIB_HOME/server/bin/mqsiprofile
