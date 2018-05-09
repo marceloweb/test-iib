@@ -20,8 +20,9 @@ if [ -n ROLLBACK ]
 then
 
   GIT_HASH=$(git log --pretty=%t -1)
-  echo $GET_HASH' '$GIT_COMMIT' '$GIT_PREVIOUS_COMMIT
-  APP_VERSION=$APP'-v1.1-'$GIT_COMMIT
+  GIT_HASH_PREVIOUS=$(git log --pretty=%t -1)
+  echo $GIT_HASH' '$GIT_HASH_PREVIOUS
+  APP_VERSION=$APP'-v1.1-'$GIT_HASH
 
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
