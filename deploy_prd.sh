@@ -19,8 +19,10 @@ echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 nã
 if [ -n ROLLBACK ]
 then
 
-  GIT_HASH=$(git log --pretty=%t -1)
-  APP_VERSION=$APP'-v1.1.'$BUILD_NUMBER
+  GIT_HASH=${GIT_COMMIT:0:7}
+  GIT_HASH_PREVIOUS=${GIT_PREVIOUS_COMMIT:0:7}
+  APP_VERSION=$APP'-v1.1-'$GIT_HASH  
+  APP_VERSION_PREVIOUS=$APP'-v1.1-'$GIT_HASH_PREVIOUS
 
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
@@ -97,5 +99,6 @@ then
      mqsideploy $BROKER -e $CONTAINER_EG -a $APP.bar
   done
 else
-  echo "rollback"
+  echo "Iniciando deploy de $APP_VERSION_PREVIOUS em $CONTAINER_EG..."
+  mqsideploy $BROKER -e $CONTAINER_EG -a $APP_VERSION_PREVIOUS.bar
 fi

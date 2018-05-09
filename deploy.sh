@@ -21,8 +21,8 @@ then
 
   GIT_HASH=${GIT_COMMIT:0:7}
   GIT_HASH_PREVIOUS=${GIT_PREVIOUS_COMMIT:0:7}
-  echo $GIT_HASH' '$GIT_HASH_PREVIOUS
   APP_VERSION=$APP'-v1.1-'$GIT_HASH
+  APP_VERSION_PREVIOUS=$APP'-v1.1-'$GIT_HASH_PREVIOUS
 
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
@@ -95,9 +95,10 @@ then
 
      echo "Reiniciando EG $CONTAINER_EG"
      mqsireload $BROKER -e $CONTAINER_EG
-     echo "Iniciando deploy em $CONTAINER_EG..."
+     echo "Iniciando deploy de $APP_VERSION em $CONTAINER_EG..."
      mqsideploy $BROKER -e $CONTAINER_EG -a $APP_VERSION.bar
   done
 else
-  echo "rollback"
+  echo "Iniciando deploy de $APP_VERSION_PREVIOUS em $CONTAINER_EG..."
+  mqsideploy $BROKER -e $CONTAINER_EG -a $APP_VERSION_PREVIOUS.bar
 fi
