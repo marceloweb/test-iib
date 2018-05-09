@@ -20,7 +20,7 @@ if [ -n ROLLBACK ]
 then
 
   GIT_HASH=$(git log --pretty=%t -1)
-  APP_VERSION=$APP'-v'$BUILD_NUMBER
+  APP_VERSION=$APP'-1.1.'$BUILD_NUMBER
 
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
