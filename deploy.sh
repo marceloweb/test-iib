@@ -19,8 +19,8 @@ echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 nã
 if [ -n ROLLBACK ]
 then
 
-  GIT_HASH=$(git log --pretty=%t -1)
-  GIT_HASH_PREVIOUS=$(git log --pretty=%t -1)
+  GIT_HASH=SUBSTRING=${GIT_COMMIT:0:7}
+  GIT_HASH_PREVIOUS=${GIT_PREVIOUS_COMMIT:0:7}
   echo $GIT_HASH' '$GIT_HASH_PREVIOUS
   APP_VERSION=$APP'-v1.1-'$GIT_HASH
 
