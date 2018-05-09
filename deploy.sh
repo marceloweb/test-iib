@@ -20,7 +20,7 @@ if [ -n ROLLBACK ]
 then
 
   GIT_HASH=$(git log --pretty=%t -1)
-  echo ${GIT_BRANCH}	
+  APP_VERSION = "$APP-v$GIT_HASH"
 
   source $IIB_HOME/server/bin/mqsiprofile
   PORT=0
@@ -50,7 +50,7 @@ then
   HTTP_PORT=$(echo `expr $PORT + 1`)
   HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
-  mqsipackagebar -a $APP_v$HASH.bar -w $WORKSPACE -k $APP
+  mqsipackagebar -a $APP_VERSION.bar -w $WORKSPACE -k $APP
 
   ENVS=( "DSV" "QA" "HOM" )
 
@@ -94,7 +94,7 @@ then
      echo "Reiniciando EG $CONTAINER_EG"
      mqsireload $BROKER -e $CONTAINER_EG
      echo "Iniciando deploy em $CONTAINER_EG..."
-     mqsideploy $BROKER -e $CONTAINER_EG -a $APP.bar
+     mqsideploy $BROKER -e $CONTAINER_EG -a $APP_VERSION.bar
   done
 else
   echo "rollback"
