@@ -23,7 +23,8 @@
                 <arg value="CRG"/>
                 <arg value="DSV"/>
                 <arg value="01"/>
-                <arg value="App_Test"/>
+		<arg value="App_Test"/>
+		<arg value="rollback"/>
         </exec>
 </target>
 </project>
