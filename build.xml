@@ -6,6 +6,7 @@
 		<arg value="DSV"/>
 		<arg value="01"/>
 		<arg value="App_Test"/>
+		<arg value="0"/>
 	</exec>
 </target>
 <target name="deploy_prd">
@@ -14,7 +15,8 @@
                 <arg value="CRG"/>
                 <arg value="PRD"/>
                 <arg value="01"/>
-                <arg value="App_Test"/>
+		<arg value="App_Test"/>
+		<arg value="0"/>
         </exec>
 </target>
 <target name="rollback">
@@ -24,7 +26,7 @@
                 <arg value="DSV"/>
                 <arg value="01"/>
 		<arg value="App_Test"/>
-		<arg value="rollback"/>
+		<arg value="1"/>
         </exec>
 </target>
 </project>
