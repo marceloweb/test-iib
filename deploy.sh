@@ -13,7 +13,7 @@ die () {
     exit 1
 }
 
-[ "$#" -eq 4 ] || die "Os 4 argumentos são obrigatórios. Apenas $# foram informados"
+[ "$#" -ge 4 ] || die "Os 4 argumentos são obrigatórios. Apenas $# foram informados"
 echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 não é numérico"
 
 if [ -n ROLLBACK ]
