@@ -1,4 +1,8 @@
 node('master'){
+    stage('Prepare'){
+        customWorkspace "$JENKINS_HOME/workspace/test-iib"
+    }
+
     stage('Clean'){
         deleteDir()
         sh 'ls -la'
