@@ -9,7 +9,7 @@ node('master'){
     }
 
     stage('Build'){
-        sh './ant deploy'
+        sh 'ant deploy'
     }
 
 }
