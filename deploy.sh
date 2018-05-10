@@ -53,14 +53,9 @@ done
 HTTP_PORT=$(echo `expr $PORT + 1`)
 HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
-if [ $ROLLBACK -eq 0 ]
-then
-  echo "Gerando arquivo .bar..."
-  echo "Workspace: $WORKSPACE"  
-  mqsipackagebar -a $APP_VERSION.bar -w $WORKSPACE -k $APP
-else
-  echo "O arquivo .bar já está gerado..."
-fi
+echo "Gerando arquivo .bar..."
+echo "Workspace: $WORKSPACE"  
+mqsipackagebar -a $APP_VERSION.bar -w $WORKSPACE -k $APP
 
 ENVS=( "DSV" "QA" "HOM" )
 
