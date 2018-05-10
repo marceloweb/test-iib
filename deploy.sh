@@ -5,7 +5,6 @@ TYPE=$1
 ENV=$2
 APP=$4
 NUMBER=$3
-CONTAINER_EG=$APP
 ROLLBACK=$5
 
 echo "Parâmetros recebidos: "
@@ -19,10 +18,11 @@ die () {
 [ "$#" -ge 4 ] || die "Os 4 argumentos são obrigatórios. Apenas $# foram informados"
 echo $3 | grep -E -q '^[0-9]+$' || die "O argumento 3 deve ser numérico. $3 não é numérico"
 
-GIT_HASH=${GIT_COMMIT:0:7}
-GIT_HASH_PREVIOUS=${GIT_PREVIOUS_COMMIT:0:7}
+GIT_HASH=$(git log --pretty=format:"%h" -1)
+GIT_HASH_PREVIOUS=$(git log --pretty=format:"%h" $GIT_HASH^1 -1)
 APP_VERSION=$APP'-v1.1-'$GIT_HASH
 APP_VERSION_PREVIOUS=$APP'-v1.1-'$GIT_HASH_PREVIOUS
+CONTAINER_EG=$APP
 
 source $IIB_HOME/server/bin/mqsiprofile
 PORT=0
