@@ -5,7 +5,7 @@
 		<arg value="CRG"/>
 		<arg value="DSV"/>
 		<arg value="01"/>
-		<arg value="App_Test"/>
+		<arg value="test-iib"/>
 		<arg value="0"/>
 	</exec>
 </target>
@@ -15,7 +15,7 @@
                 <arg value="CRG"/>
                 <arg value="PRD"/>
                 <arg value="01"/>
-		<arg value="App_Test"/>
+		<arg value="test-iib"/>
 		<arg value="0"/>
         </exec>
 </target>
@@ -25,7 +25,7 @@
                 <arg value="CRG"/>
                 <arg value="DSV"/>
                 <arg value="01"/>
-		<arg value="App_Test"/>
+		<arg value="test-iib"/>
 		<arg value="1"/>
         </exec>
 </target>

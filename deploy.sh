@@ -8,6 +8,7 @@ NUMBER=$3
 CONTAINER_EG=$APP
 ROLLBACK=$5
 
+echo "Parâmetros recebidos: "
 echo $1 $2 $3 $4 $5 
 
 die () {
@@ -30,6 +31,7 @@ x=0
 LIST_NODES=$(mqsilist | grep -Po "'.*?'" | grep -v 'http[^;]*')
 NODES=$(echo $LIST_NODES | tr " " "\n")
 
+echo "Verificando portas disponíveis..."
 for item in $NODES
 do
   LIST_EG=$(mqsilist ${item//\'} | grep -Po "'.*?'")
@@ -53,8 +55,10 @@ HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
 if [ $ROLLBACK -eq 0 ]
 then
-  echo "gerando arquivo .bar..."	
+  echo "Gerando arquivo .bar..."	
   mqsipackagebar -a $APP_VERSION.bar -w $WORKSPACE -k $APP
+else
+  echo "O arquivo .bar já está gerado..."
 fi
 
 ENVS=( "DSV" "QA" "HOM" )
@@ -67,7 +71,7 @@ do
 
    EGs=$(mqsilist $BROKER)
         
-   if [[ $BROKER = *"$EGs"* ]]
+   if [[ $CONTAINER_EG = *"$EGs"* ]]
    then
       echo "Execution grupo $CONTAINER_EG já existe e não será criado."
    else
@@ -108,3 +112,4 @@ do
       mqsideploy $BROKER -e $CONTAINER_EG -a $APP_VERSION_PREVIOUS.bar
    fi
 done
+echo "Operação concluída!!!"
