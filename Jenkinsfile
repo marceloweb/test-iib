@@ -1,7 +1,4 @@
 node('master'){
-    stage('Prepare'){
-        customWorkspace "$JENKINS_HOME/workspace/test-iib"
-    }
 
     stage('Clean'){
         deleteDir()
@@ -10,6 +7,10 @@ node('master'){
 
     stage('Fetch') {
         checkout scm
+    }
+
+    stage('Prepare'){
+        sh 'cp -R $JOB_NAME test-iib'
     }
 
     stage('Build'){
