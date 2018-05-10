@@ -10,7 +10,7 @@ node('master'){
     }
 
     stage('Prepare'){
-        sh 'cp -R $JOB_NAME test-iib'
+        sh 'cp -R $JENKINS_HOME/workspace/$JOB_NAME $JENKINS_HOME/workspace/test-iib'
     }
 
     stage('Build'){
