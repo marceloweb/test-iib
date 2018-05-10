@@ -54,8 +54,8 @@ HTTP_PORT=$(echo `expr $PORT + 1`)
 HTTPS_PORT=$(echo `expr $HTTP_PORT + 1`)
 
 echo "Gerando arquivo .bar..."
-echo "Workspace: $WORKSPACE"  
-mqsipackagebar -a $APP_VERSION.bar -w $WORKSPACE -k $APP
+echo "Workspace: $JENKINS_HOME"  
+mqsipackagebar -a $APP_VERSION.bar -w "$JENKINS_HOME/workspace" -k $JOB_NAME
 
 ENVS=( "DSV" "QA" "HOM" )
 
